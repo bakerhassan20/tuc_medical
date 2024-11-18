@@ -62,14 +62,14 @@
 
           <ul class="menu-inner py-1">
             <!-- Dashboards -->
-            <li class="menu-item  @if(request()->routeIs('dashboard') || request()->routeIs('users.index') || request()->routeIs('roles.index') )
+            <li class="menu-item  @if(request()->routeIs('dashboard') || request()->routeIs('users.index') || request()->routeIs('roles.index') || request()->routeIs('departments.index') )
                active open
               @endif
                ">
               <a href="javascript:void(0);" class="menu-link menu-toggle">
                 <i class="menu-icon tf-icons bx bx-home-smile"></i>
                 <div class="text-truncate" data-i18n="Dashboards">لوحه التحكم</div>
-                
+
               </a>
               <ul class="menu-sub">
               <li class="menu-item {{ request()->routeIs('dashboard') ? 'active' : '' }}">
@@ -89,11 +89,18 @@
                     <div class="text-truncate" data-i18n="CRM">الصلاحيات</div>
                   </a>
                 </li>
+                <li class="menu-item {{ request()->routeIs('departments.index') ? 'active' : '' }}">
+                    <a
+                      href="{{route('departments.index')}}"
+                      class="menu-link">
+                      <div class="text-truncate" data-i18n="CRM">الاقسام</div>
+                    </a>
+                  </li>
                </ul>
-                
+
             <!-- Layouts -->
-            <li class="menu-item">
-              <a href="javascript:void(0);" class="menu-link">
+            <li class="menu-item {{ request()->routeIs('devices.index') ? 'active' : '' }}">
+              <a href="{{ route('devices.index') }}" class="menu-link ">
                 <i class="menu-icon tf-icons bx bx-layout ml-4"></i>
                 <div class="text-truncate mr-3" data-i18n="Layouts">الاجهزه الطبية</div>
               </a>
@@ -109,7 +116,7 @@
 
 
 
-                      
+
             <!-- Layouts -->
             <li class="menu-item">
               <a href="javascript:void(0);" class="menu-link">
@@ -127,7 +134,7 @@
             </li>
 
 
-                      
+
             <!-- Layouts -->
             <li class="menu-item">
               <a href="javascript:void(0);" class="menu-link">
@@ -145,7 +152,7 @@
             </li>
 
 
-                      
+
             <!-- Layouts -->
             <li class="menu-item">
               <a href="javascript:void(0);" class="menu-link">

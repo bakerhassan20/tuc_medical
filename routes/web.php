@@ -1,7 +1,10 @@
 <?php
 
-use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\DeviceController;
+
+use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\DepartmentController;
 
 
 
@@ -19,6 +22,8 @@ Route::group(['middleware' => ['auth']], function() {
     Route::resource('roles','App\Http\Controllers\RoleController');
     Route::resource('users','App\Http\Controllers\UserController');
 
+    Route::resource('departments', DepartmentController::class);
+    Route::resource('devices', DeviceController::class);
 
 
 

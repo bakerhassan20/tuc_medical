@@ -42,7 +42,7 @@
                       <img src="{{ asset('storage/' . $user->avatar) }}" alt="User Image" width="90">
                   </td>
                   <td>{{ $user->name }}</td>
-                
+
                                     <td>@if (!empty($user->getRoleNames()))
                             @foreach ($user->getRoleNames() as $v)
                               {{ $v }}
@@ -82,16 +82,15 @@
 
 
 @section('script')
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"
-  type="text/javascript"></script>
+
   <script>
     $(document).ready(function() {
         $('#modal-delete').on('show.bs.modal', function(event) {
-            var button = $(event.relatedTarget); 
-            var user_id = button.data('user_id'); 
+            var button = $(event.relatedTarget);
+            var user_id = button.data('user_id');
             var username = button.data('username');
             var modal = $(this);
-            modal.find('.modal-body #user_id').val(user_id); 
+            modal.find('.modal-body #user_id').val(user_id);
             modal.find('.modal-body #username').val(username);
         });
     });

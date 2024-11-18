@@ -11,7 +11,7 @@
   data-style="light">
 
 <head>
-    
+
     @yield('head')
     @include('layouts.head')
 
@@ -57,12 +57,13 @@
     <!-- / Layout wrapper -->
 
 
-    @include('layouts.models')
-     
-    @yield('script')
-    @include('layouts.script')
 
-    
+    @include('layouts.models')
+
+
+    @include('layouts.script')
+    @yield('script')
+
 </body>
 
 </html>
