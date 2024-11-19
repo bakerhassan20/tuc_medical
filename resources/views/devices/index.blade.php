@@ -132,7 +132,7 @@
               <thead>
                 <tr>
                   <th>#</th>
-                  <th>الاسم</th>
+                  <th>اسم الجهاز</th>
                   <th>القسم</th>
                   <th>الصيانه الدورية</th>
          {{--          <th>بلد المنشأ</th>
@@ -164,7 +164,7 @@
             <span class="text-warning">{{ $device->status }}</span>
             @endif
           </td>
-{{--           <td>{{ \Carbon\Carbon::parse($device->date)->format('d/m/Y') }}</td>  --}}
+{{--           <td>{{ \Carbon\Carbon::parse($device->date)->format('Y/m/d') }}</td>  --}}
        <td class="text-center">
 
         <div class="d-flex align-items-center justify-content-center gap-1">

@@ -62,9 +62,14 @@
 
           <ul class="menu-inner py-1">
             <!-- Dashboards -->
-            <li class="menu-item  @if(request()->routeIs('dashboard') || request()->routeIs('users.index') || request()->routeIs('roles.index') || request()->routeIs('departments.index') )
-               active open
-              @endif
+            <li class="menu-item
+        @if(request()->routeIs('dashboard')
+            || request()->routeIs('users.index')
+            || request()->routeIs('roles.index')
+            || request()->routeIs('departments.index')
+            || request()->routeIs('engineers.index')
+             )active open
+        @endif
                ">
               <a href="javascript:void(0);" class="menu-link menu-toggle">
                 <i class="menu-icon tf-icons bx bx-home-smile"></i>
@@ -96,6 +101,13 @@
                       <div class="text-truncate" data-i18n="CRM">الاقسام</div>
                     </a>
                   </li>
+                  <li class="menu-item {{ request()->routeIs('engineers.index') ? 'active' : '' }}">
+                    <a
+                      href="{{route('engineers.index')}}"
+                      class="menu-link">
+                      <div class="text-truncate" data-i18n="CRM">المهندسين</div>
+                    </a>
+                  </li>
                </ul>
 
             <!-- Layouts -->
@@ -107,8 +119,8 @@
             </li>
 
             <!-- Front Pages -->
-            <li class="menu-item">
-              <a href="javascript:void(0);" class="menu-link">
+            <li class="menu-item {{ request()->routeIs('tasks.index') ? 'active' : '' }}">
+              <a href="{{ route('tasks.index') }}" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-store"></i>
                 <div class="text-truncate" data-i18n="Front Pages">المهام اليومية</div>
               </a>
@@ -118,16 +130,16 @@
 
 
             <!-- Layouts -->
-            <li class="menu-item">
-              <a href="javascript:void(0);" class="menu-link">
+            <li class="menu-item {{ request()->routeIs('attendances.index') ? 'active' : '' }}">
+              <a href="{{ route('attendances.index') }}" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-layout"></i>
                 <div class="text-truncate" data-i18n="Layouts">اوقات العمل</div>
               </a>
             </li>
 
             <!-- Front Pages -->
-            <li class="menu-item">
-              <a href="javascript:void(0);" class="menu-link">
+            <li class="menu-item {{ request()->routeIs('stores.index') ? 'active' : '' }}">
+              <a href="{{ route('stores.index') }}" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-store"></i>
                 <div class="text-truncate" data-i18n="Front Pages">المخزن</div>
               </a>
@@ -136,8 +148,8 @@
 
 
             <!-- Layouts -->
-            <li class="menu-item">
-              <a href="javascript:void(0);" class="menu-link">
+            <li class="menu-item {{ request()->routeIs('spares.index') ? 'active' : '' }}">
+              <a href="{{ route('spares.index') }}" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-layout"></i>
                 <div class="text-truncate" data-i18n="Layouts">قطع غيار</div>
               </a>

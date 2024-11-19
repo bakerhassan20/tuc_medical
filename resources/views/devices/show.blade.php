@@ -5,6 +5,8 @@
 
     <section class="main-section users">
         <div class="container">
+
+
             <div class="row mb-5">
                 <div class="col d-flex justify-content-start">
                     <!-- Device name at the start -->
@@ -15,6 +17,8 @@
                     <a class="btn btn-primary btn-sm " style="margin-top: 21px;height: 35px;" href="{{ route('devices.index') }}">رجوع</a> <!-- btn-lg for larger button -->
                 </div>
             </div>
+
+
             <!-- row -->
             <div class="card">
                 <div class="card-body">
@@ -46,14 +50,40 @@
                             <hr>
 
                             <!-- Additional device information (optional) -->
-                            <ul>
-                                <li><strong>القسم:</strong> {{ $device->department->name }}</li>
-                                <li><strong>بلد المنشأ:</strong> {{ $device->country }}</li>
-                                <li><strong>الشركة المصنعة:</strong> {{ $device->company }}</li>
-                                <li><strong>الموقع:</strong> {{ $device->location }}</li>
-                                <li><strong>تاريخ الإضافة:</strong> {{ $device->date }}</li>
-                                <li><strong>الملاحظات:</strong> {{ $device->note ?? 'لا توجد ملاحظات' }}</li>
-                            </ul>
+                           <div class="card mt-4">
+                                <div class="card-body">
+                                    <h5>تفاصيل الجهاز</h5>
+                                    <table class="table table-bordered">
+                                        <tbody>
+                                            <tr>
+                                                <th>القسم</th>
+                                                <td>{{ $device->department->name ?? 'غير محدد' }}</td>
+                                            </tr>
+                                            <tr>
+                                                <th>بلد المنشأ</th>
+                                                <td>{{ $device->country }}</td>
+                                            </tr>
+                                            <tr>
+                                                <th>الشركة المصنعة</th>
+                                                <td>{{ $device->company }}</td>
+                                            </tr>
+                                            <tr>
+                                                <th>الموقع</th>
+                                                <td>{{ $device->location }}</td>
+                                            </tr>
+                                            <tr>
+                                                <th>تاريخ الإضافة</th>
+                                                <td>{{ $device->date }}</td>
+                                            </tr>
+                                            <tr>
+                                                <th>الملاحظات</th>
+                                                <td>{{ $device->note ?? 'لا توجد ملاحظات' }}</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+
                         </div>
 
 

@@ -145,7 +145,7 @@ class DeviceController extends Controller
 
 
 
-    public function show(string $id)
+    public function show(string $id, FlasherInterface $flasher)
     {
         $device = Device::find($id);
 
@@ -156,7 +156,7 @@ class DeviceController extends Controller
         return view('devices.show',compact('device'));
     }
 
-    public function edit(string $id)
+    public function edit(string $id, FlasherInterface $flasher)
     {
         $device = Device::find($id);
 
