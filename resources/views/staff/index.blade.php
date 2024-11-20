@@ -1,6 +1,7 @@
 @extends('layouts.base')
 
 @section('content')
+@can("الكادر الهندسي")
 
 <!-- Modal-delete -->
 <div class="modal fade" id="modal-delete-staff" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
@@ -89,9 +90,11 @@
     <button   title="فلتر" type="button" style="margin-left: 10px;" class="btn btn-primary btn-sm" data-bs-toggle="collapse" data-bs-target="#filterCollapse" aria-expanded="false" aria-controls="filterCollapse">
 <i class="bx bx-filter-alt"></i>
     </button>
+    @can("اضافة مهندس")
     <a href="{{ route('staff.create') }}" class="btn btn-success btn-sm" title ="إضافة موظف جديد">
     <i class="bx bx-plus-circle"></i>
     </a>
+    @endcan
     </div>
 <!--***************************-->
 
@@ -117,15 +120,23 @@
                             <td>{{ \Carbon\Carbon::parse($staffMember->date)->format('Y/m/d') }}</td>
                             <td class="text-center">
                                 <div class="d-flex justify-content-center gap-2">
+                                    @can("عرض مهندس")
                                     <a class="btn btn-sm btn-info" href="{{ route('staff.show', $staffMember->id) }}">عرض</a>
+                                    @endcan
+                                    @can("تعديل مهندس")
                                     <a href="{{ route('staff.edit', $staffMember->id) }}" class="btn btn-sm btn-primary">تعديل</a>
+                                    @endcan
+                                    @can("حذف مهندس")
                                     <button class="btn btn-sm btn-danger"
-                                            data-bs-toggle="modal"
-                                            data-bs-target="#modal-delete-staff"
-                                            data-staff_id="{{ $staffMember->id }}"
-                                            data-staff_name="{{ $staffMember->engineer->name }}">
-                                        حذف
+                                    data-bs-toggle="modal"
+                                    data-bs-target="#modal-delete-staff"
+                                    data-staff_id="{{ $staffMember->id }}"
+                                    data-staff_name="{{ $staffMember->engineer->name }}">
+                                     حذف
                                     </button>
+                                    @endcan
+
+
                                 </div>
                             </td>
                         </tr>
@@ -138,6 +149,12 @@
         </div>
     </div>
 </section>
+@endcan
+@cannot('الكادر الهندسي')
+    <div class="col-md-offset-1 col-md-10 alert alert-danger can">
+        ليس لديك صلاحية يرجي مراجعة المسؤول
+    </div>
+@endcannot
 @endsection
 
 @section('script')

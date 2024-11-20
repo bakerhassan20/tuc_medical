@@ -1,6 +1,8 @@
 @extends('layouts.base')
 
 @section('content')
+@can("عيادات")
+
 
 <!-- Modal-delete -->
 <div class="modal fade" id="modal-delete-clinic" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
@@ -68,9 +70,12 @@
                 <button   title="فلتر" type="button" style="margin-left: 10px;" class="btn btn-primary btn-sm" data-bs-toggle="collapse" data-bs-target="#filterCollapse" aria-expanded="false" aria-controls="filterCollapse">
             <i class="bx bx-filter-alt"></i>
                 </button>
+                @can("اضافة عيادة")
                 <a href="{{ route('clinics.create') }}" class="btn btn-success btn-sm" title ="إضافة عيادة جديدة">
-                <i class="bx bx-plus-circle"></i>
-                </a>
+                    <i class="bx bx-plus-circle"></i>
+                    </a>
+                @endcan
+
                 </div>
 <!--***************************-->
 
@@ -108,11 +113,19 @@
 
                                 <td class="text-center">
                                     <div class="d-flex align-items-center justify-content-center gap-1">
-                                    {{--     <a class="btn btn-sm btn-info" href="{{ route('clinics.show', $clinic->id) }}">عرض</a> --}}
+                                        @can("عرض عيادة")
+                                        <a class="btn btn-sm btn-info" href="{{ route('clinics.show', $clinic->id) }}">عرض</a>
+                                        @endcan
+                                        @can("تعديل عيادة")
                                         <a class="btn btn-sm btn-primary" href="{{ route('clinics.edit', $clinic->id) }}">تعديل</a>
+                                        @endcan
+
+                                        @can("حذف عيادة")
                                         <div class="btn btn-sm btn-danger" data-bs-toggle="modal" data-clinic_id="{{ $clinic->id }}" data-clinic_name="{{ $clinic->clinic_name }}" data-bs-target="#modal-delete-clinic">
                                             حذف
                                         </div>
+                                        @endcan
+
                                     </div>
                                 </td>
                             </tr>
@@ -127,7 +140,12 @@
         </form>
     </div>
 </section>
-
+@endcan
+@cannot('عيادات')
+    <div class="col-md-offset-1 col-md-10 alert alert-danger can">
+        ليس لديك صلاحية يرجي مراجعة المسؤول
+    </div>
+@endcannot
 @endsection
 
 @section('script')

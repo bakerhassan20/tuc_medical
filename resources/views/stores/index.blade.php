@@ -1,6 +1,7 @@
 @extends('layouts.base')
 
 @section('content')
+@can("المخزن")
 
 <!-- Modal-delete -->
 <div class="modal fade" id="modal-delete-store" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
@@ -66,9 +67,12 @@
                     <button   title="فلتر" type="button" style="margin-left: 10px;" class="btn btn-primary btn-sm" data-bs-toggle="collapse" data-bs-target="#filterCollapse" aria-expanded="false" aria-controls="filterCollapse">
                 <i class="bx bx-filter-alt"></i>
                     </button>
+                    @can("اضافة مادة")
                     <a href="{{ route('stores.create') }}" class="btn btn-success btn-sm" title ="إضافة متجر جديد">
-                    <i class="bx bx-plus-circle"></i>
-                    </a>
+                        <i class="bx bx-plus-circle"></i>
+                        </a>
+                    @endcan
+
                     </div>
     <!--***************************-->
 
@@ -99,11 +103,18 @@
 
                                 <td class="text-center">
                                     <div class="d-flex align-items-center justify-content-center gap-1">
-                                     {{--    <a class="btn btn-sm btn-info" href="{{ route('stores.show', $store->id) }}">عرض</a> --}}
+                                        @can("عرض مادة")
+  {{--    <a class="btn btn-sm btn-info" href="{{ route('stores.show', $store->id) }}">عرض</a> --}}
+                                        @endcan
+                                        @can("تعديل مادة")
                                         <a class="btn btn-sm btn-primary" href="{{ route('stores.edit', $store->id) }}">تعديل</a>
+                                        @endcan
+                                        @can("حذف مادة")
                                         <div class="btn btn-sm btn-danger" data-bs-toggle="modal" data-store_id="{{ $store->id }}" data-store_name="{{ $store->name }}" data-bs-target="#modal-delete-store">
                                             حذف
                                         </div>
+                                        @endcan
+
                                     </div>
                                 </td>
                             </tr>
@@ -118,7 +129,12 @@
         </form>
     </div>
 </section>
-
+@endcan
+@cannot('المخزن')
+    <div class="col-md-offset-1 col-md-10 alert alert-danger can">
+        ليس لديك صلاحية يرجي مراجعة المسؤول
+    </div>
+@endcannot
 @endsection
 
 @section('script')

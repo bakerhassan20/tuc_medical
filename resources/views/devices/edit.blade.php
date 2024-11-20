@@ -2,7 +2,7 @@
 
 @section('content')
 
-
+@can('تعديل جهاز')
     <section class="main-section users">
         <div class="container">
             @if (count($errors) > 0)
@@ -33,7 +33,7 @@
             <!-- row -->
             <div class="card">
                 <div class="card-body">
-               
+
 
                     <form class="parsley-style-1" id="selectForm4" autocomplete="off" name="selectForm2"
                     action="{{ route('devices.update', $device->id) }}" method="post" enctype="multipart/form-data">
@@ -157,4 +157,10 @@
         </div>
         </div>
     </section>
+    @endcan
+    @cannot('تعديل جهاز')
+        <div class="col-md-offset-1 col-md-10 alert alert-danger can">
+            ليس لديك صلاحية يرجي مراجعة المسؤول
+        </div>
+    @endcannot
 @endsection

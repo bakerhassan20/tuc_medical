@@ -156,3 +156,73 @@ input[type="checkbox"]:checked::before {
 
 .home p{
 min-height: 65px;}
+
+
+
+.can{
+  margin:50px;
+}
+
+
+
+.pagination-wrapper {
+    display: flex;
+    justify-content: center;
+    /* Centers the pagination */
+    margin-top: 20px;
+    /* Adds some space between documents and pagination */
+}
+
+.pagination {
+    display: flex;
+    justify-content: center;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.pagination li {
+    margin: 0 5px;
+}
+
+.pagination a,
+.pagination span {
+    display: inline-block;
+    padding: 8px 15px;
+    color: #141414;
+    background-color: #c29144;
+    border: 1px solid #c29144;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    margin-top: 2px;
+    ;
+}
+
+.pagination a:hover,
+.pagination span:hover {
+    background-color: #c29144;
+    color: rgb(15, 15, 15);
+}
+
+.pagination .disabled span {
+    color: #c29144;
+    border-color: #c29144;
+    cursor: not-allowed;
+}
+
+.pagination .active a {
+    background-color: #c29144;
+    color: white;
+}
+
+.pagination p {
+    display: none !important;
+}
+
+
+
+label{
+    margin-bottom:3px;
+}

@@ -1,7 +1,7 @@
 @extends('layouts.base')
 
 @section('content')
-
+@can("التقارير الشهرية")
 <!-- Modal-delete -->
 <div class="modal fade" id="modal-delete-report" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
     <div class="modal-dialog">
@@ -108,13 +108,20 @@
 
                                 <td class="text-center">
                                     <div class="d-flex align-items-center justify-content-center gap-1">
-                                    {{--     <a class="btn btn-sm btn-info" href="{{ route('reports.show',$report->id) }}">
+                                    @can("عرض تقرير")
+                                       {{--  <a class="btn btn-sm btn-info" href="{{ route('reports.show',$report->id) }}">
                                             عرض
-                                          </a> --}}
-                                        <a class="btn btn-sm btn-primary" href="{{ route('reports.edit', $report->id) }}">تعديل</a>
-                                        <div class="btn btn-sm btn-danger" data-bs-toggle="modal" data-report_id="{{ $report->id }}" data-report_title="{{ $report->device->name}}" data-bs-target="#modal-delete-report">
-                                            حذف
-                                        </div>
+                                        </a> --}}
+                                    @endcan
+                                    @can("تعديل تقرير")
+                                    <a class="btn btn-sm btn-primary" href="{{ route('reports.edit', $report->id) }}">تعديل</a>
+                                    @endcan
+                                    @can("حذف تقرير")
+                                    <div class="btn btn-sm btn-danger" data-bs-toggle="modal" data-report_id="{{ $report->id }}" data-report_title="{{ $report->device->name}}" data-bs-target="#modal-delete-report">
+                                        حذف
+                                    </div>
+                                    @endcan
+
                                     </div>
                                 </td>
                             </tr>
@@ -129,7 +136,12 @@
         </form>
     </div>
 </section>
-
+@endcan
+@cannot('التقارير الشهرية')
+    <div class="col-md-offset-1 col-md-10 alert alert-danger can">
+        ليس لديك صلاحية يرجي مراجعة المسؤول
+    </div>
+@endcannot
 @endsection
 
 @section('script')

@@ -2,7 +2,7 @@
 
 @section('content')
 
-
+@can('اضافة جهاز')
     <section class="main-section users">
         <div class="container">
             @if (count($errors) > 0)
@@ -18,16 +18,21 @@
                     </ul>
                 </div>
             @endif
-            <h4 class="main-heading mt-5">اضافة جهاز جديد</h4>
+
+            <div class="row mb-5">
+                <div class="col d-flex justify-content-start">
+                    <!-- Device name at the start -->
+                    <h4 class="main-heading mt-5">اضافة جهاز جديد</h4>
+                </div>
+                <div class="col d-flex justify-content-end">
+                    <!-- Back button with custom size -->
+                    <a class="btn btn-primary btn-sm " style="margin-top: 21px;height: 35px;" href="{{ route('devices.index') }}">رجوع</a> <!-- btn-lg for larger button -->
+                </div>
+            </div>
             <!-- row -->
             <div class="card">
                 <div class="card-body">
-                    <div class="col-lg-12 margin-tb">
-                        <div class="al">
-                            <a class="btn btn-primary btn-sm" href="{{ route('devices.index') }}">رجوع</a>
-                        </div>
-                    </div><br>
-
+            
                     <form class="parsley-style-1" id="selectForm4" autocomplete="off" name="selectForm2"
                     action="{{ route('devices.store', 'store') }}" method="post" enctype="multipart/form-data">
                     {{ csrf_field() }}
@@ -123,7 +128,7 @@
                         </div>
 
                     </div><br><br>
-        
+
 
                         <div class="mg-t-30 text-center">
                             <button class="btn btn-primary pd-x-20" type="submit">اضافة</button>
@@ -135,4 +140,11 @@
         </div>
         </div>
     </section>
+
+@endcan
+@cannot('اضافة جهاز')
+        <div class="col-md-offset-1 col-md-10 alert alert-danger can">
+            ليس لديك صلاحية يرجي مراجعة المسؤول
+        </div>
+@endcannot
 @endsection

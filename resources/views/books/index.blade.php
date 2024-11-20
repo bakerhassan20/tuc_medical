@@ -1,7 +1,7 @@
 @extends('layouts.base')
 
 @section('content')
-
+@can("الكتب")
 <!-- Modal-delete -->
 <div class="modal fade" id="modal-delete-book" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
     <div class="modal-dialog">
@@ -10,7 +10,7 @@
                 <h5 class="modal-title" id="staticBackdropLabel">حذف الكتاب</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <form action="{{ route('books.destroy', 'delete') }}" method="post">
+             <form action="{{ route('books.destroy', 'delete') }}" method="post">
                 {{ method_field('delete') }}
                 {{ csrf_field() }}
                 <div class="modal-body">
@@ -80,14 +80,17 @@
     <div class="container">
         <form class="bg-white p-3 rounded-2 shadow">
 
-            <!--***************************-->
+<!--***************************-->
             <div class="d-flex align-items-center flex-wrap justify-content-end mb-3">
                 <button   title="فلتر" type="button" style="margin-left: 10px;" class="btn btn-primary btn-sm" data-bs-toggle="collapse" data-bs-target="#filterCollapse" aria-expanded="false" aria-controls="filterCollapse">
             <i class="bx bx-filter-alt"></i>
                 </button>
-                <a href="{{ route('books.create') }}" class="btn btn-success btn-sm" title ="إضافة كتاب جديد">
+            @can("اضافة كتاب")
+            <a href="{{ route('books.create') }}" class="btn btn-success btn-sm" title ="إضافة كتاب جديد">
                 <i class="bx bx-plus-circle"></i>
-                </a>
+            </a>
+            @endcan
+
                 </div>
 <!--***************************-->
 
@@ -145,7 +148,12 @@
         </form>
     </div>
 </section>
-
+@endcan
+@cannot('الكتب')
+    <div class="col-md-offset-1 col-md-10 alert alert-danger can">
+        ليس لديك صلاحية يرجي مراجعة المسؤول
+    </div>
+@endcannot
 @endsection
 
 @section('script')

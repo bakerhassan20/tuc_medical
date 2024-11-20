@@ -3,6 +3,7 @@
 @section('content')
 
 
+@can('الاجهزة الطبية')
 
  <!-- Modal-delete -->
     <div
@@ -85,7 +86,6 @@
                         <option value="سنويا" {{ old('periodic_maintenance') == 'سنويا' ? 'selected' : '' }}>سنويا</option>
                     </select>                </div>
                 <div>
-                    <label for="name" class="form-label">الحالة</label>
                     <label> حاله الجهاز </label>
                     <select style="width:150px" class="form-control" name="status">
                         <option  value="all">اختر الحالة</option>
@@ -112,9 +112,12 @@
                     <button   title="فلتر" type="button" style="margin-left: 10px;" class="btn btn-primary btn-sm" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
                 <i class="bx bx-filter-alt"></i>
                     </button>
+                    @can('اضافة جهاز')
                     <a href="{{ route('devices.create') }}" class="btn btn-success btn-sm" title ="إضافة جهاز جديد">
-                    <i class="bx bx-plus-circle"></i>
-                    </a>
+                        <i class="bx bx-plus-circle"></i>
+                        </a>
+                    @endcan
+
                 </div>
     <!--***************************-->
           <div class="table-responsive">
@@ -158,22 +161,25 @@
        <td class="text-center">
 
         <div class="d-flex align-items-center justify-content-center gap-1">
-            <div class=""><a class="btn btn-sm btn-info" href="{{ route('devices.show',$device->id) }}">
-              عرض
-            </a></div>
-            <div class="d-flex align-items-center justify-content-center gap-1">
-              <div class=""><a class="btn btn-sm btn-primary" href="{{ route('devices.edit',$device->id) }}">
-                تعديل
-              </a></div>
 
-              <div class="btn btn-sm btn-danger"
-                   data-bs-toggle="modal"
-                   data-device_id="{{ $device->id }}"
-                   data-devicename="{{ $device->name }}"
-                   data-device_type="{{ $device->type }}"
-                   data-bs-target="#modal-delete-device">
-                حذف
-              </div>
+                @can('عرض جهاز')
+                <a class="btn btn-sm btn-info" href="{{ route('devices.show',$device->id) }}">
+                    عرض</a>
+                @endcan
+                @can('تعديل جهاز')
+                <a class="btn btn-sm btn-primary" href="{{ route('devices.edit',$device->id) }}">تعديل </a>
+                @endcan
+                @can("حذف جهاز")
+                <div class="btn btn-sm btn-danger"
+                data-bs-toggle="modal"
+                data-device_id="{{ $device->id }}"
+                data-devicename="{{ $device->name }}"
+                data-device_type="{{ $device->type }}"
+                data-bs-target="#modal-delete-device">
+                 حذف
+                </div>
+                @endcan
+
             </div>
           </td>
         </tr>
@@ -190,8 +196,16 @@
       </div>
     </section>
 <!-- Pagination Links -->
-@endsection
 
+
+@endcan
+@cannot('الاجهزة الطبية')
+    <div class="col-md-offset-1 col-md-10 alert alert-danger can">
+        ليس لديك صلاحية يرجي مراجعة المسؤول
+    </div>
+@endcannot
+
+@endsection
 
 @section('script')
 

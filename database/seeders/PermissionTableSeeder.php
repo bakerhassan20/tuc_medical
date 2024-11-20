@@ -7,9 +7,8 @@ use Spatie\Permission\Models\Permission;
 
 class PermissionTableSeeder extends Seeder
 {
-    /**
-     * Run the database seeds.
-     */
+
+    
     public function run(): void
     {
 
@@ -25,12 +24,14 @@ class PermissionTableSeeder extends Seeder
 
 
                 'الاجهزة الطبية',
+                'اضافة جهاز',
                 'عرض جهاز',
                 'تعديل جهاز',
                 'حذف جهاز',
 
 
                 'المهام اليومية',
+                'اضافة مهام',
                 'عرض مهام',
                 'تعديل مهام',
                 'حذف مهام',
@@ -38,12 +39,14 @@ class PermissionTableSeeder extends Seeder
 
 
                 'اوقات العمل',
+                'اضافة وقت',
                 'عرض وقت',
                 'تعديل وقت',
                 'حذف وقت',
 
 
                 'المخزن',
+                'اضافة مادة',
                 'عرض مادة',
                 'حذف مادة',
                 'تعديل مادة',
@@ -51,6 +54,7 @@ class PermissionTableSeeder extends Seeder
 
 
                 'قطع غيار',
+                'اضافة قطعة',
                 'عرض قطعة',
                 'تعديل قطعة',
                 'حذف قطعة',
@@ -58,6 +62,7 @@ class PermissionTableSeeder extends Seeder
 
 
                 'الكادر الهندسي',
+                'اضافة مهندس',
                 'عرض مهندس',
                 'تعديل مهندس',
                 'حذف مهندس',
@@ -65,6 +70,7 @@ class PermissionTableSeeder extends Seeder
 
 
                 'التقارير الشهرية',
+                'اضافة تقرير',
                 'عرض تقرير',
                 'تعديل تقرير',
                 'حذف تقرير',
@@ -72,12 +78,14 @@ class PermissionTableSeeder extends Seeder
 
 
                 'الكتب',
+                'اضافة كتاب',
                 'عرض كتاب',
                 'تعديل كتاب',
                 'حذف كتاب',
 
 
                 'عيادات',
+                'اضافة عيادة',
                 'عرض عيادة',
                 'تعديل عيادة',
                 'حذف عيادة',

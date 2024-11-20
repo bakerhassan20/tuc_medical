@@ -1,6 +1,7 @@
 @extends('layouts.base')
 
 @section('content')
+@can("عرض مهام")
 <section class="main-section users">
     <div class="container">
 
@@ -72,4 +73,11 @@
         </div>
     </div>
 </section>
+
+@endcan
+@cannot('عرض مهام')
+    <div class="col-md-offset-1 col-md-10 alert alert-danger can">
+        ليس لديك صلاحية يرجي مراجعة المسؤول
+    </div>
+@endcannot
 @endsection

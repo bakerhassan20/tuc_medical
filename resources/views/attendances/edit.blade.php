@@ -1,7 +1,7 @@
 @extends('layouts.base')
 
 @section('content')
-
+@can("تعديل وقت")
 <section class="main-section users">
     <div class="container">
         @if (count($errors) > 0)
@@ -103,5 +103,10 @@ value="{{ old('attendance_time', \Carbon\Carbon::parse($attendance->attendance_t
 
     </div>
 </section>
-
+@endcan
+@cannot('تعديل وقت')
+    <div class="col-md-offset-1 col-md-10 alert alert-danger can">
+        ليس لديك صلاحية يرجي مراجعة المسؤول
+    </div>
+@endcannot
 @endsection

@@ -1,7 +1,7 @@
 @extends('layouts.base')
 
 @section('content')
-
+@can("اضافة مادة")
     <section class="main-section store">
         <div class="container">
             @if (count($errors) > 0)
@@ -88,5 +88,10 @@
 
         </div>
     </section>
-
+    @endcan
+    @cannot('اضافة مادة')
+        <div class="col-md-offset-1 col-md-10 alert alert-danger can">
+            ليس لديك صلاحية يرجي مراجعة المسؤول
+        </div>
+    @endcannot
 @endsection

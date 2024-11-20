@@ -1,6 +1,7 @@
 @extends('layouts.base')
 
 @section('content')
+@can("تعديل تقرير")
 
 <section class="main-section report">
     <div class="container">
@@ -137,4 +138,10 @@
         });
     });
 </script>
+@endcan
+@cannot('تعديل تقرير')
+    <div class="col-md-offset-1 col-md-10 alert alert-danger can">
+        ليس لديك صلاحية يرجي مراجعة المسؤول
+    </div>
+@endcannot
 @endsection

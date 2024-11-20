@@ -1,6 +1,7 @@
 @extends('layouts.base')
 
 @section('content')
+@can("المهام اليومية")
 
  <!-- Modal-delete -->
 <div class="modal fade" id="modal-delete-task" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
@@ -93,9 +94,12 @@
                     <button   title="فلتر" type="button" style="margin-left: 10px;" class="btn btn-primary btn-sm" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
                 <i class="bx bx-filter-alt"></i>
                     </button>
+                    @can("اضافة مهام")
                     <a href="{{ route('tasks.create') }}" class="btn btn-success btn-sm" title ="إضافة مهام جديدة">
-                    <i class="bx bx-plus-circle"></i>
-                    </a>
+                        <i class="bx bx-plus-circle"></i>
+                        </a>
+                    @endcan
+
                 </div>
     <!--***************************-->
 
@@ -141,11 +145,18 @@
                                 <td>{{ \Carbon\Carbon::parse($task->date)->format('Y/m/d') }}</td>
                                 <td class="text-center">
                                     <div class="d-flex align-items-center justify-content-center gap-1">
+                                        @can("عرض مهام")
                                         <a class="btn btn-sm btn-info" href="{{ route('tasks.show', $task->id) }}">عرض</a>
-                                        <a class="btn btn-sm btn-primary" href="{{ route('tasks.edit', $task->id) }}">تعديل</a>
-                                        <div class="btn btn-sm btn-danger" data-bs-toggle="modal" data-task_id="{{ $task->id }}" data-taskname="{{ $task->name }}" data-task_type="{{ $task->type }}" data-bs-target="#modal-delete-task">
-                                            حذف
-                                        </div>
+                                        @endcan
+                                       @can("تعديل مهام")
+                                       <a class="btn btn-sm btn-primary" href="{{ route('tasks.edit', $task->id) }}">تعديل</a>
+                                       @endcan
+                                       @can("حذف مهام")
+                                       <div class="btn btn-sm btn-danger" data-bs-toggle="modal" data-task_id="{{ $task->id }}" data-taskname="{{ $task->name }}" data-task_type="{{ $task->type }}" data-bs-target="#modal-delete-task">
+                                        حذف
+                                    </div>
+                                       @endcan
+
                                     </div>
                                 </td>
                             </tr>
@@ -160,7 +171,12 @@
         </form>
     </div>
 </section>
-
+@endcan
+@cannot('المهام اليومية')
+    <div class="col-md-offset-1 col-md-10 alert alert-danger can">
+        ليس لديك صلاحية يرجي مراجعة المسؤول
+    </div>
+@endcannot
 @endsection
 
 @section('script')

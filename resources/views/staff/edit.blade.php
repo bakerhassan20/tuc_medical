@@ -1,6 +1,7 @@
 @extends('layouts.base')
 
 @section('content')
+@can("تعديل مهندس")
 
 <section class="main-section staff">
     <div class="container">
@@ -109,5 +110,10 @@
 
     </div>
 </section>
-
+@endcan
+@cannot('تعديل مهندس')
+    <div class="col-md-offset-1 col-md-10 alert alert-danger can">
+        ليس لديك صلاحية يرجي مراجعة المسؤول
+    </div>
+@endcannot
 @endsection

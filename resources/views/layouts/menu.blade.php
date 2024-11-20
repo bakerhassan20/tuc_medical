@@ -77,16 +77,22 @@
 
               </a>
               <ul class="menu-sub">
+
+            @can('الرئيسية')
               <li class="menu-item {{ request()->routeIs('dashboard') ? 'active' : '' }}">
                   <a href="{{ route('dashboard') }}" class="menu-link">
                     <div class="text-truncate" data-i18n="Analytics">الرئيسية</div>
                   </a>
                 </li>
+            @endcan
+            @can('المستخدمين')
                 <li class="menu-item {{ request()->routeIs('users.index') ? 'active' : '' }}">
                   <a href="{{ route('users.index') }}" class="menu-link">
                     <div class="text-truncate" data-i18n="Analytics">المستخدمين</div>
                   </a>
                 </li>
+            @endcan
+            @can('الصلاحيات')
                 <li class="menu-item {{ request()->routeIs('roles.index') ? 'active' : '' }}">
                   <a
                     href="{{route('roles.index')}}"
@@ -94,13 +100,17 @@
                     <div class="text-truncate" data-i18n="CRM">الصلاحيات</div>
                   </a>
                 </li>
+            @endcan
+            @can('الاقسام والكليات')
                 <li class="menu-item {{ request()->routeIs('departments.index') ? 'active' : '' }}">
                     <a
                       href="{{route('departments.index')}}"
                       class="menu-link">
-                      <div class="text-truncate" data-i18n="CRM">الاقسام</div>
+                      <div class="text-truncate" data-i18n="CRM">الاقسام والكليات</div>
                     </a>
                   </li>
+            @endcan
+            @can('المهندسين')
                   <li class="menu-item {{ request()->routeIs('engineers.index') ? 'active' : '' }}">
                     <a
                       href="{{route('engineers.index')}}"
@@ -108,35 +118,38 @@
                       <div class="text-truncate" data-i18n="CRM">المهندسين</div>
                     </a>
                   </li>
+            @endcan
                </ul>
 
             <!-- Layouts -->
+
+            @can('الاجهزة الطبية')
             <li class="menu-item {{ request()->routeIs('devices.index') ? 'active' : '' }}">
               <a href="{{ route('devices.index') }}" class="menu-link ">
-                <i class="menu-icon tf-icons bx bx-layout ml-4"></i>
+                <i class="menu-icon tf-icons bx bxs-devices ml-4"></i>
                 <div class="text-truncate mr-3" data-i18n="Layouts">الاجهزه الطبية</div>
               </a>
             </li>
-
+            @endcan
+            @can('المهام اليومية')
             <!-- Front Pages -->
             <li class="menu-item {{ request()->routeIs('tasks.index') ? 'active' : '' }}">
               <a href="{{ route('tasks.index') }}" class="menu-link">
-                <i class="menu-icon tf-icons bx bx-store"></i>
+                <i class="menu-icon tf-icons bx bx-task"></i>
                 <div class="text-truncate" data-i18n="Front Pages">المهام اليومية</div>
               </a>
             </li>
-
-
-
-
+            @endcan
+            @can('اوقات العمل')
             <!-- Layouts -->
             <li class="menu-item {{ request()->routeIs('attendances.index') ? 'active' : '' }}">
               <a href="{{ route('attendances.index') }}" class="menu-link">
-                <i class="menu-icon tf-icons bx bx-layout"></i>
+                <i class="menu-icon tf-icons bx bx-time-five"></i>
                 <div class="text-truncate" data-i18n="Layouts">اوقات العمل</div>
               </a>
             </li>
-
+            @endcan
+            @can('المخزن')
             <!-- Front Pages -->
             <li class="menu-item {{ request()->routeIs('stores.index') ? 'active' : '' }}">
               <a href="{{ route('stores.index') }}" class="menu-link">
@@ -145,51 +158,48 @@
               </a>
             </li>
 
-
-
-            <!-- Layouts -->
+            @endcan
+            @can('قطع غيار')
             <li class="menu-item {{ request()->routeIs('spares.index') ? 'active' : '' }}">
               <a href="{{ route('spares.index') }}" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-layout"></i>
                 <div class="text-truncate" data-i18n="Layouts">قطع غيار</div>
               </a>
             </li>
-
-            <!-- Front Pages -->
+            @endcan
+            @can('الكادر الهندسي')
             <li class="menu-item {{ request()->routeIs('staff.index') ? 'active' : '' }}">
               <a href="{{ route('staff.index') }}" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-store"></i>
                 <div class="text-truncate" data-i18n="Front Pages">الكادر الهندسي</div>
               </a>
             </li>
-
-
-
-            <!-- Layouts -->
+            @endcan
+            @can('التقارير الشهرية')
             <li class="menu-item {{ request()->routeIs('reports.index') ? 'active' : '' }}">
               <a href="{{ route('reports.index') }}" class="menu-link">
-                <i class="menu-icon tf-icons bx bx-layout"></i>
+                <i class="menu-icon tf-icons bx bxs-report"></i>
                 <div class="text-truncate" data-i18n="Layouts">التقرير الشهري</div>
               </a>
             </li>
 
-            <!-- Front Pages -->
+            @endcan
+            @can('الكتب')
             <li class="menu-item {{ request()->routeIs('books.index') ? 'active' : '' }}">
               <a href="{{ route('books.index') }}" class="menu-link">
-                <i class="menu-icon tf-icons bx bx-store"></i>
+                <i class="menu-icon tf-icons bx bx-book"></i>
                 <div class="text-truncate" data-i18n="Front Pages">الكتب الرسمية</div>
               </a>
             </li>
-
-
-                   <!-- Front Pages -->
-                   <li class="menu-item {{ request()->routeIs('clinics.index') ? 'active' : '' }}">
+            @endcan
+            @can('عيادات')
+            <li class="menu-item {{ request()->routeIs('clinics.index') ? 'active' : '' }}">
               <a href="{{ route('clinics.index') }}" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-store"></i>
                 <div class="text-truncate" data-i18n="Front Pages">عيادات طب الاسنان</div>
               </a>
             </li>
-
+            @endcan
 
 
 

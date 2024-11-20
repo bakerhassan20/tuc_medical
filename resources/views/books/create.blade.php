@@ -1,6 +1,7 @@
 @extends('layouts.base')
 
 @section('content')
+@can("اضافة كتاب")
 
     <section class="main-section book">
         <div class="container">
@@ -100,7 +101,12 @@
 
         </div>
     </section>
-
+    @endcan
+    @cannot('اضافة كتاب')
+        <div class="col-md-offset-1 col-md-10 alert alert-danger can">
+            ليس لديك صلاحية يرجي مراجعة المسؤول
+        </div>
+    @endcannot
 @endsection
 
 @section('script')

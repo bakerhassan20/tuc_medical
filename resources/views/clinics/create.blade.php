@@ -1,7 +1,7 @@
 @extends('layouts.base')
 
 @section('content')
-
+@can("اضافة عيادة")
     <section class="main-section clinic">
         <div class="container">
             @if (count($errors) > 0)
@@ -90,7 +90,12 @@
 
         </div>
     </section>
-
+    @endcan
+    @cannot('اضافة عيادة')
+        <div class="col-md-offset-1 col-md-10 alert alert-danger can">
+            ليس لديك صلاحية يرجي مراجعة المسؤول
+        </div>
+    @endcannot
 @endsection
 
 @section('script')
