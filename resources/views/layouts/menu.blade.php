@@ -156,8 +156,8 @@
             </li>
 
             <!-- Front Pages -->
-            <li class="menu-item">
-              <a href="javascript:void(0);" class="menu-link">
+            <li class="menu-item {{ request()->routeIs('staff.index') ? 'active' : '' }}">
+              <a href="{{ route('staff.index') }}" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-store"></i>
                 <div class="text-truncate" data-i18n="Front Pages">الكادر الهندسي</div>
               </a>
@@ -166,16 +166,16 @@
 
 
             <!-- Layouts -->
-            <li class="menu-item">
-              <a href="javascript:void(0);" class="menu-link">
+            <li class="menu-item {{ request()->routeIs('reports.index') ? 'active' : '' }}">
+              <a href="{{ route('reports.index') }}" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-layout"></i>
                 <div class="text-truncate" data-i18n="Layouts">التقدير الشهري</div>
               </a>
             </li>
 
             <!-- Front Pages -->
-            <li class="menu-item">
-              <a href="javascript:void(0);" class="menu-link">
+            <li class="menu-item {{ request()->routeIs('books.index') ? 'active' : '' }}">
+              <a href="{{ route('books.index') }}" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-store"></i>
                 <div class="text-truncate" data-i18n="Front Pages">الكتب الرسمية</div>
               </a>

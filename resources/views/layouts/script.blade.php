@@ -5,8 +5,6 @@
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"
   type="text/javascript"></script>
 
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
-
 <!-- jQuery -->
 <script src="{{ asset('assets/vendor/libs/jquery/jquery.js') }}"></script>
 

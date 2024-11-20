@@ -5,31 +5,27 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Staff extends Model
+class Report extends Model
 {
     use HasFactory;
+
     protected $fillable = [
-        'engineer_id',
-        'college_id',
         'department_id',
-        'date',
-        'img',
+        'device_id',
+        'work_done',
+        'description',
+        'quantity',
     ];
 
-    // Relationships
-    public function college()
-    {
-        return $this->belongsTo(Department::class);
-    }
-
+    // Relationship with Department
     public function department()
     {
         return $this->belongsTo(Department::class);
     }
 
-    public function engineer()
+    // Relationship with Device
+    public function device()
     {
-        return $this->belongsTo(Engineer::class);
+        return $this->belongsTo(Device::class);
     }
-
 }

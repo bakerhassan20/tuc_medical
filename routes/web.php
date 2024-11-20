@@ -1,11 +1,14 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\TaskController;
+use App\Http\Controllers\BookController;
 
+use App\Http\Controllers\TaskController;
 use App\Http\Controllers\SpareController;
+use App\Http\Controllers\StaffController;
 use App\Http\Controllers\StoreController;
 use App\Http\Controllers\DeviceController;
+use App\Http\Controllers\ReportController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\EngineerController;
 use App\Http\Controllers\AttendanceController;
@@ -35,6 +38,13 @@ Route::group(['middleware' => ['auth']], function() {
     Route::resource('attendances', AttendanceController::class);
     Route::resource('stores', StoreController::class);
     Route::resource('spares', SpareController::class);
+    Route::resource('staff', StaffController::class);
+    Route::resource('reports', ReportController::class);
+    Route::resource('books', BookController::class);
+
+    
+    Route::get('/get-devices-by-department', [ReportController::class, 'getDevicesByDepartment'])->name('get.devices.by.department');
+
 
 
 

@@ -179,9 +179,10 @@ class SpareController extends Controller
 
         // Handle image upload and delete the old image
         if ($request->hasFile('img')) {
-            if (Storage::disk('public')->exists($spare->img)) {
+            if ($spare->img && Storage::disk('public')->exists($spare->img)) {
                 Storage::disk('public')->delete($spare->img);
             }
+
 
             $filename = time() . '_' . $request->file('img')->getClientOriginalName();
             $path = "spares/" . $request->name;
