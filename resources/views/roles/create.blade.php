@@ -19,7 +19,14 @@
     </ul>
 </div>
 @endif
-        <h4 class="main-heading mt-5">تعديل صلاحيه </h4>
+        <div class="row mb-5">
+            <div class="col d-flex justify-content-start">
+                <h4 class="main-heading mt-5">اضافة صلاحيه </h4>
+            </div>
+            <div class="col d-flex justify-content-end">
+                <a class="btn btn-primary btn-sm " style="margin-top: 21px;height: 35px;" href="{{ route('roles.index') }}">رجوع</a>
+            </div>
+        </div>
 <!-- row -->
 
 {!! Form::open(array('route' => 'roles.store','method'=>'POST')) !!}
@@ -27,14 +34,7 @@
     <div class="col-md-12">
         <div class="card mg-b-20">
             <div class="card-body">
-                <div class="main-content-label mg-b-5">
-                    <div class="">
-                        <a class="btn btn-primary btn-sm" href="{{ route('roles.index') }}">رجوع</a>
-                    </div>
-                </div>
-
-
-                    <br/><br/>    <div class="form-group">
+            <br/>    <div class="form-group">
                             <p>اسم الصلاحية :</p>
                             {!! Form::text('name', null, array('class' => 'form-control')) !!}
 
@@ -52,7 +52,7 @@
 
 
                       <br/>   <br/> <div class="col-xs-12 col-sm-12 col-md-12 text-center">
-                        <button type="submit" class="btn btn-primary">تحديث</button>
+                        <button type="submit" class="btn btn-primary">اضافة</button>
                     </div>
 
 

@@ -11,6 +11,7 @@ use App\Http\Controllers\ClinicController;
 use App\Http\Controllers\DeviceController;
 use App\Http\Controllers\ReportController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\SettingController;
 use App\Http\Controllers\EngineerController;
 use App\Http\Controllers\AttendanceController;
 use App\Http\Controllers\DepartmentController;
@@ -34,6 +35,7 @@ Route::group(['middleware' => ['auth']], function() {
     Route::resource('departments', DepartmentController::class);
     Route::resource('engineers', EngineerController::class);
 
+
     Route::resource('devices', DeviceController::class);
     Route::resource('tasks', TaskController::class);
     Route::resource('attendances', AttendanceController::class);
@@ -46,6 +48,9 @@ Route::group(['middleware' => ['auth']], function() {
 
     Route::get('/get-devices-by-department', [ReportController::class, 'getDevicesByDepartment'])->name('get.devices.by.department');
 
+
+    Route::get('get-settings', [SettingController::class, 'getSettings'])->name('get.settings');
+    Route::post('set-settings', [SettingController::class, 'setSettings'])->name('set.settings');
 
 
 

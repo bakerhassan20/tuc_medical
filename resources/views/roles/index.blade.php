@@ -1,7 +1,7 @@
 @extends('layouts.base')
 
 @section('content')
- 
+
     <section class="main-section users">
       <div class="container">
         <h4 class="main-heading mt-5">الصلاحيات</h4>
@@ -40,7 +40,7 @@
                                                 href="{{ route('roles.edit', $role->id) }}">تعديل</a>
 
 
-                                        @if ($role->name !== 'مدير')
+                                        @if ($role->name !== 'سوبر ادمن')
 
                                                 {!! Form::open(['method' => 'DELETE', 'route' => ['roles.destroy',
                                                 $role->id], 'style' => 'display:inline']) !!}

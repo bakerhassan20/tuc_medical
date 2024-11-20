@@ -4,19 +4,19 @@
 @section('content')
     <section class="main-section users">
       <div class="container">
-        <h4 class="main-heading mt-5"> عرض صلاحيه</h4>
+        <div class="row mb-5">
+            <div class="col d-flex justify-content-start">
+                <h4 class="main-heading mt-5"> عرض صلاحيه</h4>
+            </div>
+            <div class="col d-flex justify-content-end">
+                <a class="btn btn-primary btn-sm " style="margin-top: 21px;height: 35px;" href="{{ route('roles.index') }}">رجوع</a>
+            </div>
+        </div>
 <!-- row -->
 <div class="row">
     <div class="col-md-12">
         <div class="card mg-b-20">
             <div class="card-body">
-                <div class="main-content-label mg-b-5">
-                    <div class="">
-                        <a class="btn btn-primary btn-sm" href="{{ route('roles.index') }}">رجوع</a>
-                    </div>
-                </div>
-
-
                           <br> <li>{{ $role->name }}</li><br>
 
                                     @if(!empty($rolePermissions))

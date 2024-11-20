@@ -19,15 +19,18 @@
             </ul>
         </div>
         @endif
-                <h4 class="main-heading mt-5">اضافة مستخدم جديد</h4>
+                <div class="row mb-5">
+                    <div class="col d-flex justify-content-start">
+                        <h4 class="main-heading mt-5">اضافة مستخدم جديد</h4>
+                    </div>
+                    <div class="col d-flex justify-content-end">
+                        <a class="btn btn-primary btn-sm " style="margin-top: 21px;height: 35px;" href="{{ route('users.index') }}">رجوع</a>
+                    </div>
+                </div>
         <!-- row -->
             <div class="card">
             <div class="card-body">
-                <div class="col-lg-12 margin-tb">
-                    <div class="al">
-                        <a class="btn btn-primary btn-sm" href="{{ route('users.index') }}">رجوع</a>
-                    </div>
-                </div><br>
+               
 
                 <form class="parsley-style-1" id="selectForm4" autocomplete="off" name="selectForm2"
                     action="{{route('users.store','test')}}" method="post" enctype="multipart/form-data">
