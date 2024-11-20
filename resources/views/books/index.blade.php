@@ -29,19 +29,10 @@
 
 <div class="container mb-5">
     <h4 class="main-heading mt-5">الكتب</h4>
-
-    <div class="row">
-        <div class="d-flex align-items-center gap-3 mt-3">
-            <!-- Button to toggle collapse -->
-            <button type="button" class="btn btn-primary" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
-                الفلتر
-            </button>
-        </div>
-    </div>
 </div>
 
 <!-- Collapsible content (Initially hidden) -->
-<div class="collapse" id="collapseExample">
+<div class="collapse" id="filterCollapse">
     <div class="container">
         <form class="bg-white p-3 rounded-2 shadow" method="GET" action="{{ route('books.index') }}">
             <div class="d-flex align-items-center flex-wrap justify-content-between mb-3">
@@ -72,7 +63,7 @@
                     <select style="width:180px" class="form-control" name="status">
                         <option value="">اختر الحالة</option>
                         <option value="مستلم" {{ old('status') == 'مستلم' ? 'selected' : '' }}>مستلم</option>
-                        <option value="قيد المراجعه" {{ old('status') == 'قيد المراجعه' ? 'selected' : '' }}>قيد المراجعه</option>
+                        <option value="قيد المراجعة" {{ old('status') == 'قيد المراجعة' ? 'selected' : '' }}>قيد المراجعة</option>
                         <option value="غير مستلم" {{ old('status') == 'غير مستلم' ? 'selected' : '' }}>غير مستلم</option>
                     </select>
                 </div>
@@ -88,12 +79,17 @@
 <section class="main-section book">
     <div class="container">
         <form class="bg-white p-3 rounded-2 shadow">
-            <div class="d-flex align-items-center flex-wrap justify-content-end mb-2">
-                <a href="{{ route('books.create') }}" class="btn btn-success btn-sm">
-                    أضف كتاب جديد
-                    <i class="menu-icon tf-plus bx bx-plus ml-4"></i>
+
+            <!--***************************-->
+            <div class="d-flex align-items-center flex-wrap justify-content-end mb-3">
+                <button   title="فلتر" type="button" style="margin-left: 10px;" class="btn btn-primary btn-sm" data-bs-toggle="collapse" data-bs-target="#filterCollapse" aria-expanded="false" aria-controls="filterCollapse">
+            <i class="bx bx-filter-alt"></i>
+                </button>
+                <a href="{{ route('books.create') }}" class="btn btn-success btn-sm" title ="إضافة كتاب جديد">
+                <i class="bx bx-plus-circle"></i>
                 </a>
-            </div>
+                </div>
+<!--***************************-->
 
             <div class="table-responsive">
                 <table class="table main-table">
@@ -115,7 +111,15 @@
                                 <td>{{ $book->department->name }}</td>
                                 <td>{{ $book->engineer->name }}</td>
                                 <td>{{ $book->type }}</td>
-                                <td>{{ $book->status }}</td>
+                                <td>
+                                    @if($book->status == 'مستلم')
+                                        <span class="text-success">{{ $book->status }}</span>
+                                    @elseif($book->status == 'قيد المراجعة')
+                                        <span class="text-warning">{{ $book->status }}</span>
+                                    @else
+                                        <span class="text-danger">{{ $book->status }}</span>
+                                    @endif
+                                </td>
                                 <td>{{ $book->date }}</td>
 
                                 <td class="text-center">

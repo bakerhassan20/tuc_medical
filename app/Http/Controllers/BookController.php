@@ -18,7 +18,7 @@ class BookController extends Controller
         if ($request->has('department_id') && $request->department_id != '' && $request->department_id != 'all') {
             $query->where('department_id', $request->department_id);
         }
-        if ($request->has('engineer_id') && $request->engineer_id != '') {
+        if ($request->has('engineer_id') && $request->engineer_id != ''&& $request->engineer_id != 'all') {
             $query->where('engineer_id', $request->engineer_id);
         }
         if ($request->has('status') && $request->status != '') {
@@ -27,7 +27,7 @@ class BookController extends Controller
 
         $books = $query->paginate(10);
         $books->appends($request->all());
-        
+
         $departments = Department::get();
         $engineers = Engineer::get();
 
@@ -47,7 +47,7 @@ class BookController extends Controller
             'department_id' => 'required|exists:departments,id',
             'engineer_id' => 'required|exists:engineers,id',
             'type' => 'required|string|max:255',
-            'status' => 'required|in:مستلم,قيد المراجعه,غير مستلم',
+            'status' => 'required|in:مستلم,قيد المراجعة,غير مستلم',
             'date' => 'required|date',
         ], [
             'department_id.required' => 'حقل القسم مطلوب.',
@@ -94,7 +94,7 @@ class BookController extends Controller
             'department_id' => 'required|exists:departments,id',
             'engineer_id' => 'required|exists:engineers,id',
             'type' => 'required|string|max:255',
-            'status' => 'required|in:مستلم,قيد المراجعه,غير مستلم',
+            'status' => 'required|in:مستلم,قيد المراجعة,غير مستلم',
             'date' => 'required|date',
         ]);
 

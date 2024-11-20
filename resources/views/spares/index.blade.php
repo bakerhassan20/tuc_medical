@@ -30,13 +30,7 @@
 <!-- Filter Section -->
 <div class="container mb-5">
     <h4 class="main-heading mt-5">قطع الغيار</h4>
-    <div class="row">
-        <div class="d-flex align-items-center gap-3 mt-3">
-            <button type="button" class="btn btn-primary" data-bs-toggle="collapse" data-bs-target="#filterCollapse" aria-expanded="false" aria-controls="filterCollapse">
-                الفلتر
-            </button>
-        </div>
-    </div>
+
 </div>
 
 <!-- Collapsible content (Initially hidden) -->
@@ -77,12 +71,17 @@
 <!-- Spare Parts Table -->
 <section class="main-section spares">
     <div class="container">
-        <div class="d-flex justify-content-end mb-3">
-            <a href="{{ route('spares.create') }}" class="btn btn-success btn-sm">
-                أضف قطعة جديدة
-                <i class="menu-icon tf-plus bx bx-plus ms-2"></i>
-            </a>
-        </div>
+
+        <!--***************************-->
+            <div class="d-flex align-items-center flex-wrap justify-content-end mb-3">
+                <button   title="فلتر" type="button" style="margin-left: 10px;" class="btn btn-primary btn-sm" data-bs-toggle="collapse" data-bs-target="#filterCollapse" aria-expanded="false" aria-controls="filterCollapse">
+            <i class="bx bx-filter-alt"></i>
+                </button>
+                <a href="{{ route('spares.create') }}" class="btn btn-success btn-sm" title ="إضافة قطعة جديدة">
+                <i class="bx bx-plus-circle"></i>
+                </a>
+                </div>
+<!--***************************-->
 
         <div class="table-responsive">
             <table class="table main-table">

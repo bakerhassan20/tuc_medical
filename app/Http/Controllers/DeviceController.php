@@ -32,14 +32,14 @@ class DeviceController extends Controller
 
     $devices = $query->paginate(10);
     $devices->appends($request->all());
-    $departments = Department::all();
+    $departments = Department::where('type','قسم')->get();
     return view('devices.index', compact('devices', 'departments'));
     }
 
 
     public function create()
     {
-        $departments = Department::get();
+        $departments = Department::where('type','قسم')->get();
         return view('devices.create',compact('departments'));
 
     }
@@ -101,6 +101,13 @@ class DeviceController extends Controller
             'photos.*.mimes' => 'الملفات يجب أن تكون بصيغ jpg, jpeg, png',
         ]);
 
+        if ($validator->fails()) {
+            foreach ($validator->errors()->all() as $error) {
+                $flasher->addError($error);
+            }
+            return redirect()->route('devices.create')->withInput();
+        }
+
         $userId = auth()->user();
         // Store the main document information
 
@@ -118,12 +125,7 @@ class DeviceController extends Controller
         ]);
 
 
-        if ($validator->fails()) {
-            foreach ($validator->errors()->all() as $error) {
-                $flasher->addError($error);
-            }
-            return redirect()->route('devices.create')->withInput();
-        }
+
 
         // Handle multiple file uploads
         if ($request->hasFile('photos')) {
@@ -164,7 +166,7 @@ class DeviceController extends Controller
             $flasher->addError('الجهاز غير موجود.');
             return redirect()->route('devices.index');
         }
-        $departments = Department::get();
+        $departments = Department::where('type','قسم')->get();
         return view('devices.edit',compact('departments','device'));
     }
 

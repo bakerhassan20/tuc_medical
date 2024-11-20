@@ -79,7 +79,7 @@
                                 <label>الحالة</label>
                                 <select class="form-control" name="status" required>
                                     <option value="مستلم" {{ old('status', $book->status) == 'مستلم' ? 'selected' : '' }}>مستلم</option>
-                                    <option value="قيد المراجعه" {{ old('status', $book->status) == 'قيد المراجعه' ? 'selected' : '' }}>قيد المراجعه</option>
+                                    <option value="قيد المراجعة" {{ old('status', $book->status) == 'قيد المراجعة' ? 'selected' : '' }}>قيد المراجعة</option>
                                     <option value="غير مستلم" {{ old('status', $book->status) == 'غير مستلم' ? 'selected' : '' }}>غير مستلم</option>
                                 </select>
                             </div>

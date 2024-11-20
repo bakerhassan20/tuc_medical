@@ -169,7 +169,7 @@
             <li class="menu-item {{ request()->routeIs('reports.index') ? 'active' : '' }}">
               <a href="{{ route('reports.index') }}" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-layout"></i>
-                <div class="text-truncate" data-i18n="Layouts">التقدير الشهري</div>
+                <div class="text-truncate" data-i18n="Layouts">التقرير الشهري</div>
               </a>
             </li>
 
@@ -183,8 +183,8 @@
 
 
                    <!-- Front Pages -->
-                   <li class="menu-item">
-              <a href="javascript:void(0);" class="menu-link">
+                   <li class="menu-item {{ request()->routeIs('clinics.index') ? 'active' : '' }}">
+              <a href="{{ route('clinics.index') }}" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-store"></i>
                 <div class="text-truncate" data-i18n="Front Pages">عيادات طب الاسنان</div>
               </a>

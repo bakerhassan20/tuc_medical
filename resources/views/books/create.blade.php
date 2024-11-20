@@ -75,7 +75,7 @@
                                     <label>حالة الكتاب</label>
                                     <select class="form-control" name="status" required>
                                         <option value="مستلم" {{ old('status') == 'مستلم' ? 'selected' : '' }}>مستلم</option>
-                                        <option value="قيد المراجعه" {{ old('status') == 'قيد المراجعه' ? 'selected' : '' }}>قيد المراجعه</option>
+                                        <option value="قيد المراجعة" {{ old('status') == 'قيد المراجعة' ? 'selected' : '' }}>قيد المراجعة</option>
                                         <option value="غير مستلم" {{ old('status') == 'غير مستلم' ? 'selected' : '' }}>غير مستلم</option>
                                     </select>
                                 </div>

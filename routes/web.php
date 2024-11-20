@@ -7,6 +7,7 @@ use App\Http\Controllers\TaskController;
 use App\Http\Controllers\SpareController;
 use App\Http\Controllers\StaffController;
 use App\Http\Controllers\StoreController;
+use App\Http\Controllers\ClinicController;
 use App\Http\Controllers\DeviceController;
 use App\Http\Controllers\ReportController;
 use App\Http\Controllers\ProfileController;
@@ -41,8 +42,8 @@ Route::group(['middleware' => ['auth']], function() {
     Route::resource('staff', StaffController::class);
     Route::resource('reports', ReportController::class);
     Route::resource('books', BookController::class);
+    Route::resource('clinics', ClinicController::class);
 
-    
     Route::get('/get-devices-by-department', [ReportController::class, 'getDevicesByDepartment'])->name('get.devices.by.department');
 
 

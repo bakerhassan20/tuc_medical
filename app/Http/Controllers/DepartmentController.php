@@ -17,17 +17,36 @@ class DepartmentController extends Controller
         if ($request->has('name') && $request->name != '') {
             $query->where('name', 'like', '%' . $request->name . '%');
         }
+
+        if ($request->has('type') && $request->type != '') {
+            $query->where('type',$request->type);
+        }
+
         $departments = $query->paginate(10);
         $departments->appends($request->all());
         return view('departments.index', compact('departments'));
     }
 
-    public function store(Request $request)
+    public function store(Request $request, FlasherInterface $flasher)
     {
         $inputs =$request->all();
         $validator = Validator::make($inputs,[
             'name' => 'required|string|max:255',
+            'type' => 'required|in:قسم,كلية',
+
+        ],[
+            'name.required' => 'الاسم هو حقل مطلوب.',
+            'type.required' => 'النوع هو حقل مطلوب.',
+            'type.in' => 'النوع يجب أن يكون من الخيارات المحددة.',
         ]);
+
+        if ($validator->fails()) {
+            foreach ($validator->errors()->all() as $error) {
+                $flasher->addError($error);
+            }
+            return redirect()->route('departments.index')->withInput();
+        }
+
         Department::create($inputs);
         return redirect()->route('departments.index')->with('success','تم اضافة القسم بنجاح');
     }
@@ -41,9 +60,13 @@ class DepartmentController extends Controller
 
         $validator = Validator::make($inputs, [
                 'name' => 'required|string|max:255',
+                'type' => 'required|in:قسم,كلية',
+
             ], [
                 'name.required' => 'يجب ادخال قسم',
                 'name.max' => 'الاسم يجب أن يكون أقل من 255 حرفًا.',
+                'type.required' => 'النوع هو حقل مطلوب.',
+                'type.in' => 'النوع يجب أن يكون من الخيارات المحددة.',
             ]);
 
             if ($validator->fails()) {

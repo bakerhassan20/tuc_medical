@@ -35,7 +35,7 @@ class TaskController extends Controller
 
     $tasks = $query->paginate(10);
     $tasks->appends($request->all());
-    $departments = Department::all();
+    $departments = Department::where('type','قسم')->get();
     $engineers = Engineer::all();
 
     return view('tasks.index', compact('tasks', 'departments','engineers'));
@@ -46,7 +46,7 @@ class TaskController extends Controller
 
     public function create()
     {
-        $departments = Department::get();
+        $departments = Department::where('type','قسم')->get();
         $engineers = Engineer::get();
         return view('tasks.create',compact('departments','engineers'));
 
@@ -124,8 +124,8 @@ class TaskController extends Controller
             return redirect()->route('tasks.index');
         }
 
-        $departments = Department::get();
-        $engineers = \App\Models\Engineer::all(); // Assuming you have an Engineer model
+        $departments = Department::where('type','قسم')->get();
+        $engineers = Engineer::all(); // Assuming you have an Engineer model
         return view('tasks.edit', compact('departments', 'engineers', 'task'));
     }
 

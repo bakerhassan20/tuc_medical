@@ -41,7 +41,7 @@
                     </div><br/><br/>
                            <div class="row">
                             @foreach($permission as $value)
-                               <div class="col-4">
+                               <div class="col-lg-3 col-md-6">
                             <label style="font-size:17px;" class="form-check">
                             {{ Form::checkbox('permission[]', $value->id, false, ['id'=>'inlineCheckbox2','class' => 'form-check-input', 'style' => 'transform: scale(1.2);']) }}
                            <span style="margin-right: 5px;"> {{ $value->name }}</span> </label>

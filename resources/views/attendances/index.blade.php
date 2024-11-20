@@ -28,22 +28,15 @@
 </div>
 
 <div class="container mb-5">
-    <h4 class="main-heading mt-5">حضور الموظفين</h4>
+    <h4 class="main-heading mt-5"> اوقات العمل</h4>
 
-    <div class="row">
-        <div class="d-flex align-items-center gap-3 mt-3">
-            <!-- Button to toggle collapse -->
-            <button type="button" class="btn btn-primary" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
-                الفلتر
-            </button>
-        </div>
-    </div>
 </div>
 
 <!-- Collapsible content (Initially hidden) -->
-<div class="collapse" id="collapseExample">
+<div class="collapse" id="filterCollapse">
     <div class="container">
         <form class="bg-white p-3 rounded-2 shadow" method="GET" action="{{ route('attendances.index') }}">
+
             <div class="d-flex align-items-center flex-wrap justify-content-between mb-3">
                 <div>
                     <label for="engineer" class="form-label">اسم المهندس</label>
@@ -85,12 +78,17 @@
 <section class="main-section attendance">
     <div class="container">
         <form class="bg-white p-3 rounded-2 shadow">
-            <div class="d-flex align-items-center flex-wrap justify-content-end mb-2">
-                <a href="{{ route('attendances.create') }}" class="btn btn-success btn-sm">
-                    أضف حضور جديد
-                    <i class="menu-icon tf-plus bx bx-plus ml-4"></i>
-                </a>
-            </div>
+
+    <!--***************************-->
+                 <div class="d-flex align-items-center flex-wrap justify-content-end mb-3">
+                    <button   title="فلتر" type="button" style="margin-left: 10px;" class="btn btn-primary btn-sm" data-bs-toggle="collapse" data-bs-target="#filterCollapse" aria-expanded="false" aria-controls="filterCollapse">
+                <i class="bx bx-filter-alt"></i>
+                    </button>
+                    <a href="{{ route('attendances.create') }}" class="btn btn-success btn-sm" title ="إضافة حضور جديد">
+                    <i class="bx bx-plus-circle"></i>
+                    </a>
+                    </div>
+    <!--***************************-->
 
             <div class="table-responsive">
                 <table class="table main-table">

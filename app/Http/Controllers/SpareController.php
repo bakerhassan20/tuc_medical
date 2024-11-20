@@ -29,14 +29,14 @@ class SpareController extends Controller
 
         $spares = $query->paginate(10);
         $spares->appends($request->all());
-        $departments = Department::all();
+        $departments = Department::where('type','قسم')->get();
 
         return view('spares.index', compact('spares', 'departments'));
     }
 
     public function create()
     {
-        $departments = Department::get();
+        $departments = Department::where('type','قسم')->get();
         return view('spares.create', compact('departments'));
     }
 
@@ -120,7 +120,7 @@ class SpareController extends Controller
             return redirect()->route('spares.index');
         }
 
-        $departments = Department::get();
+        $departments = Department::where('type','قسم')->get();
         return view('spares.edit', compact('spare', 'departments'));
     }
 

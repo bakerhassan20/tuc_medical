@@ -23,7 +23,7 @@
                                       <div class="row">
                                     @foreach($rolePermissions as $v)
 
-                                        <div class="col-4">
+                                        <div class="col-lg-3 col-md-6 mb-2">
                                           {{ $v->name }}
                                         </div>
 

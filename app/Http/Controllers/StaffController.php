@@ -30,8 +30,8 @@ class StaffController extends Controller
 
         $staff = $query->paginate(10);
         $staff->appends($request->all());
-        $departments = Department::all();
-        $colleges = Department::all();
+        $departments = Department::where('type','قسم')->get();
+        $colleges = Department::where('type','كلية')->get();
         $engineers = Engineer::all();
 
 
@@ -41,8 +41,8 @@ class StaffController extends Controller
     public function create()
     {
         $engineers = Engineer::all();
-        $departments = Department::get();
-        $colleges = Department::get();
+        $departments = Department::where('type','قسم')->get();
+        $colleges = Department::where('type','كلية')->get();
         return view('staff.create', compact('departments', 'colleges','engineers'));
     }
 
@@ -107,8 +107,8 @@ class StaffController extends Controller
             return redirect()->route('staff.index');
         }
 
-        $departments = Department::get();
-        $colleges = Department::get();
+        $departments = Department::where('type','قسم')->get();
+        $colleges = Department::where('type','كلية')->get();
         $engineers = Engineer::all();
 
         return view('staff.edit', compact('staff', 'departments', 'colleges','engineers'));

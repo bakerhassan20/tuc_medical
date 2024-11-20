@@ -16,7 +16,7 @@ return new class extends Migration
             $table->unsignedBigInteger('department_id');
             $table->unsignedBigInteger('engineer_id');
             $table->string('type');
-            $table->enum('status', ['مستلم', 'قيد المراجعه', 'غير مستلم']);
+            $table->enum('status', ['مستلم', 'قيد المراجعة', 'غير مستلم']);
             $table->date('date');
 
             // Foreign key constraints
