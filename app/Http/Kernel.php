@@ -21,7 +21,7 @@ class Kernel extends HttpKernel
         \Illuminate\Foundation\Http\Middleware\ValidatePostSize::class,
         \App\Http\Middleware\TrimStrings::class,
         \Illuminate\Foundation\Http\Middleware\ConvertEmptyStringsToNull::class,
-        
+
     ];
 
     /**
@@ -68,4 +68,10 @@ class Kernel extends HttpKernel
         'role' => \Spatie\Permission\Middlewares\RoleMiddleware::class,
         'permission' => \Spatie\Permission\Middlewares\PermissionMiddleware::class,
     ];
+
+    protected function schedule(Schedule $schedule)
+{
+    // Schedule the job to run every day at midnight (you can adjust the time)
+    $schedule->job(new \App\Jobs\SendBooksNotification)->dailyAt('00:00');
+}
 }

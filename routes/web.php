@@ -57,6 +57,21 @@ Route::group(['middleware' => ['auth']], function() {
 
 
 
+    //delete Notifications
+    Route::post('/markAs',function(Request $r){
+        auth()->user()->unreadNotifications->find($r->not_id)->delete();
+        return redirect()->back();
+    })->name('markAs');
+
+    //markAsRead
+    Route::get('/markAsRead', function(){
+        $user = auth()->user();
+        if ($user) {
+            $user->unreadNotifications->markAsRead();
+        }
+            return redirect()->back();
+        })->name('mark');
+
 
 
     });

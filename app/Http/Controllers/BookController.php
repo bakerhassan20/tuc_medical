@@ -3,10 +3,14 @@
 namespace App\Http\Controllers;
 
 use App\Models\Book;
-use App\Models\Department;
+use App\Models\User;
 use App\Models\Engineer;
+use App\Models\Department;
 use Illuminate\Http\Request;
+use App\Events\AdminNotification;
 use Flasher\Prime\FlasherInterface;
+use Illuminate\Support\Facades\Auth;
+use App\Notifications\BookNotification;
 use Illuminate\Support\Facades\Validator;
 
 class BookController extends Controller
@@ -67,8 +71,14 @@ class BookController extends Controller
         }
 
         // Create a new book record
-        Book::create($request->all());
+        $book = Book::create($request->all());
 
+
+        $user = User::find(1);
+
+        \Notification::send($user,new BookNotification($book->id,$book->status));
+
+        AdminNotification::dispatch($user->id,'book');
         $flasher->addSuccess('تم اضافة الكتاب بنجاح');
         return redirect()->route('books.index');
     }

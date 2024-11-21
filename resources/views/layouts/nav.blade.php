@@ -29,18 +29,22 @@
 
                 <li class="nav-item dropdown-notifications navbar-dropdown dropdown me-3 me-xl-2">
                     <a class="nav-link dropdown-toggle hide-arrow" href="javascript:void(0);" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false">
-                      <span class="position-relative">
+                      <span class="position-relative" id="notifications_count">
                         <i class="bx bx-bell bx-md"></i>
-                        <span class="badge rounded-pill bg-danger badge-dot badge-notifications border"></span>
-                      </span>
+                        <span style="color: red;font-size: 13px;right: 16px;top: -4px;position: absolute;font-weight: bold;">
+                            {{ auth()->user()->unreadNotifications->count() }}
+                        </span>
+                    </span>
+
+
                     </a>
                     <ul class="dropdown-menu dropdown-menu-end p-0">
                       <li class="dropdown-menu-header border-bottom">
                         <div class="dropdown-header d-flex align-items-center py-3">
                           <h6 class="mb-0 me-auto">الاشعارات</h6>
                           <div class="d-flex align-items-center h6 mb-0">
-                            <span class="badge bg-label-primary me-2">8 New</span>
-                            <a href="javascript:void(0)" class="dropdown-notifications-all p-2" data-bs-toggle="tooltip" data-bs-placement="top" aria-label="Mark all as read" data-bs-original-title="Mark all as read"><i class="bx bx-envelope-open text-heading"></i></a>
+                            <span class="badge bg-label-primary me-2"> {{ auth()->user()->unreadNotifications->count() }} </span>
+                            <a href="{{ route('mark') }}" class="dropdown-notifications-all p-2" data-bs-toggle="tooltip" data-bs-placement="top" aria-label="Mark all as read" data-bs-original-title="جعل الكل مقروء"><i class="bx bx-envelope-open text-heading"></i></a>
                           </div>
                         </div>
                       </li>

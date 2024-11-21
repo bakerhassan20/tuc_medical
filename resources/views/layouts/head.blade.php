@@ -41,3 +41,42 @@
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200..1000&display=swap" rel="stylesheet">
+
+
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<script src="https://js.pusher.com/7.2/pusher.min.js"></script>
+
+
+ <script>
+    @auth
+   var JSvar = "<?= Auth::user()->id?>";
+    @endauth
+       // Enable pusher logging - don't include this in production
+       Pusher.logToConsole = true;
+
+       var pusher = new Pusher('781f8f90926b7f8f25f4', {
+         cluster: 'ap2'
+       });
+
+       var channel = pusher.subscribe('status-liked');
+       channel.bind('noyify', function(data) {
+        
+           if(data.username == JSvar && data.message == 'book'){
+           $("#notifications_count").load(window.location.href + " #notifications_count");
+            $.get(window.location.href, function(response) {
+               var updatedContent = $(response).find('#unread').html();
+
+               // Update the #unread div with the fetched content
+               $("#unread").html(updatedContent);
+
+             });
+           }else{
+
+           }
+
+
+       });
+
+
+
+     </script>
